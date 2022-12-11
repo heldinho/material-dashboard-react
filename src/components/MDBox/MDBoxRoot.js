@@ -1,25 +1,10 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
 export default styled(Box)(({ theme, ownerState }) => {
   const { palette, functions, borders, boxShadows } = theme;
-  const { variant, bgColor, color, opacity, borderRadius, shadow, coloredShadow } = ownerState;
+  const { variant, bgColor, bgGradient, color, opacity, borderRadius, shadow, coloredShadow } =
+    ownerState;
 
   const { gradients, grey, white } = palette;
   const { linearGradient } = functions;
@@ -83,6 +68,8 @@ export default styled(Box)(({ theme, ownerState }) => {
     backgroundValue = validGradients.find((el) => el === bgColor)
       ? linearGradient(gradients[bgColor].main, gradients[bgColor].state)
       : white.main;
+  } else if (variant === 'bgGradient') {
+    backgroundValue = linearGradient(bgGradient.left, bgGradient.right);
   } else if (validColors.find((el) => el === bgColor)) {
     backgroundValue = palette[bgColor] ? palette[bgColor].main : greyColors[bgColor];
   } else {

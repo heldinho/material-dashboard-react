@@ -1,32 +1,25 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { forwardRef } from 'react';
-
-// prop-types is a library for typechecking of props
 import PropTypes from 'prop-types';
-
-// Custom styles for MDBox
 import MDBoxRoot from 'components/MDBox/MDBoxRoot';
 
 const MDBox = forwardRef(
-  ({ variant, bgColor, color, opacity, borderRadius, shadow, coloredShadow, ...rest }, ref) => (
+  (
+    { variant, bgColor, bgGradient, color, opacity, borderRadius, shadow, coloredShadow, ...rest },
+    ref
+  ) => (
     <MDBoxRoot
       {...rest}
       ref={ref}
-      ownerState={{ variant, bgColor, color, opacity, borderRadius, shadow, coloredShadow }}
+      ownerState={{
+        variant,
+        bgColor,
+        bgGradient,
+        color,
+        opacity,
+        borderRadius,
+        shadow,
+        coloredShadow,
+      }}
     />
   )
 );
@@ -35,6 +28,10 @@ const MDBox = forwardRef(
 MDBox.defaultProps = {
   variant: 'contained',
   bgColor: 'transparent',
+  bgGradient: {
+    left: '#000',
+    right: '#222',
+  },
   color: 'dark',
   opacity: 1,
   borderRadius: 'none',
@@ -46,6 +43,7 @@ MDBox.defaultProps = {
 MDBox.propTypes = {
   variant: PropTypes.oneOf(['contained', 'gradient']),
   bgColor: PropTypes.string,
+  bgGradient: PropTypes.object,
   color: PropTypes.string,
   opacity: PropTypes.number,
   borderRadius: PropTypes.string,
